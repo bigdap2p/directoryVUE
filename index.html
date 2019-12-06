@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>My first Vue app</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="vue.js"></script>
+  <script src="axios.min.js"></script>
+  <script src="papaparse.min.js"></script>
+
+  <link rel="stylesheet" href="bootstrap.min.css" />
+</head>
+<body>
+
+  <div id="app" class="container">
+    <br>
+    <div class="container col-lg-6">
+      <input v-model="query" placeholder="Search">
+      <button v-on:click="csvMethod()">Get to CSV</button>
+        <br><br>
+    </div>
+      <div class="row">    
+        <div class="col-lg-3" style="margin-top: 15px"
+        v-for="(item, index) in computedList"
+        v-bind:key="item.id"
+        v-bind:data-index="index">
+          <div class="card" style="background-color: #fcf3b1">
+             <div class="card-body">
+              
+               <h4 class="card-title">{{item.lastName+' '+item.firstName}}</h4>
+               <h6 class="card-subtitle mb-2 text-muted">{{item.telephone}}</h6>
+               <h6 class="card-subtitle mb-2 text-muted">{{item.adresseEmail}}</h6>
+              
+            <a href="#" class="card-link">Card link</a>
+            <a href="#" class="card-link">Another link</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script>    
+new Vue({
+  el: '#app',
+  data :{
+      query: '',
+      selected: '',
+      info: [],
+      newList: [],
+  },
+  mounted () {
+    axios
+      .get('fileGit.json')
+      .then(response => (this.info = response.data))
+  }, 
+  computed: {
+    computedList: function () {
+      var vm = this
+      
+      return this.info.filter(function (item) {
+      var result = item.adresseEmail.toLowerCase().indexOf(vm.query.toLowerCase()) !== -1
+      result +=  item.firstName.toLowerCase().indexOf(vm.query.toLowerCase()) !== -1
+      result +=  item.lastName.toLowerCase().indexOf(vm.query.toLowerCase()) !== -1
+      result +=  item.telephone.toLowerCase().indexOf(vm.query.toLowerCase()) !== -1
+
+      return result
+      
+      })
+     
+    }
+  },
+  methods: { 
+    csvMethod: function(){
+      var csvFile = Papa.unparse(this.computedList)
+      const csv = 'data:text/csv;charset=utf-8,' + csvFile
+      const data = encodeURI(csv)   
+      window.open(data,"nom_popup",)
+    }
+  }
+})
+</script>  
+</body>
+</html>

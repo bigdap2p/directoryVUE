@@ -1,0 +1,16 @@
+[{"id":"1","adresseEmail":"exemple@hotmail.fr","firstName":"Julien",
+"lastName":"********","countryOfResidence":"SPAIN","cityOfResidence":"Barcelona",
+"telephone":"0034678****","dateOfBirth":"04/08/1985","languagesSpoken":"Spanish,English,French"},
+{"id":"2","adresseEmail":"expt@hotmail.fr","firstName":"Marina",
+    "lastName":"*********","countryOfResidence":"SPAIN","cityOfResidence":"Barcelona",
+    "telephone":"00665544****","dateOfBirth":"01/07/1988","languagesSpoken":"Spanish,French"},
+    {"id":"3","adresseEmail":"exemple3@hotmail.Fr","firstName":"Martin",
+        "lastName":"******","countryOfResidence":"FRANCE","cityOfResidence":"Lyon",
+        "telephone":"0403432****","dateOfBirth":"09/03/1990","languagesSpoken":"French"},
+        {"id":"4","adresseEmail":"cococoexemple@hotmail.fr","firstName":"Sandra",
+            "lastName":"********","countryOfResidence":"England","cityOfResidence":"Londre",
+            "telephone":"0034678****","dateOfBirth":"06/08/1989","languagesSpoken":"English,French"},
+            {"id":"5","adresseEmail":"lastexemple@gmail.fr","firstName":"josephine",
+                "lastName":"*******","countryOfResidence":"SWEDEN","cityOfResidence":"Stockholm",
+                "telephone":"0038338****","dateOfBirth":"09/08/1979","languagesSpoken":"English,French"}
+]
